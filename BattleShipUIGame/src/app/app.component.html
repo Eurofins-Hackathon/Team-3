@@ -1,0 +1,49 @@
+<div class="scores">
+  <h3>Scores</h3>
+  <p>Player Score: {{ playerScore }}</p>
+  <p>AI Score: {{ aiScore }}</p>
+</div>
+
+<div class="available-ships">
+  <h3>Available Ships</h3>
+  <div *ngFor="let ship of availableShips" 
+       draggable="true" 
+       (dragstart)="onDragStart($event, ship)"
+       class="ship-icon" 
+       [ngStyle]="{ 'background-color': ship.color }">
+    <!-- Ship icon representation -->
+    <span class="material-icons">ship</span>
+  </div>
+</div>
+
+<div class="game-board player-board">
+  <h3>Player's Board</h3>
+  <div *ngFor="let row of playerBoard; let rowIndex = index" class="row">
+    <div *ngFor="let cell of row; let colIndex = index" 
+         class="cell" 
+         [class.ship]="cell === 'P' || cell === 'C'"
+         [class.player]="cell === 'P'"
+         [class.ai]="cell === 'C'"
+         [class.hit]="cell === 'H'"
+         [class.miss]="cell === 'M'"
+         (click)="onAICellClick(rowIndex, colIndex)"
+         (dragover)="onDragOver($event)"
+         (drop)="onDrop($event)"
+         [attr.data-row]="rowIndex" 
+         [attr.data-col]="colIndex">
+    </div>
+  </div>
+</div>
+
+<div class="game-board ai-board">
+  <h3>AI's Board</h3>
+  <div *ngFor="let row of aiBoard; let rowIndex = index" class="row">
+    <div *ngFor="let cell of row; let colIndex = index" 
+         class="cell" 
+         [class.ship]="cell === 'C'"
+         [class.hit]="cell === 'H'"
+         [class.miss]="cell === 'M'"
+         (click)="onPlayerCellClick(rowIndex, colIndex)">
+    </div>
+  </div>
+</div>
