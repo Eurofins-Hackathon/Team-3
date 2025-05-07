@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  title = 'BattleShipUIGame';
   board: ('' | 'S' | 'H' | 'M' | 'P' | 'C')[][] = [];
   playerBoard: ('' | 'S' | 'H' | 'M' | 'P' | 'C')[][] = [];
   aiBoard: ('' | 'S' | 'H' | 'M' | 'C')[][] = [];
