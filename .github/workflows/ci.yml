@@ -22,13 +22,17 @@ jobs:
         node-version: '14'
 
     - name: Install dependencies
+      working-directory: BattleShipUIGame
       run: npm install
 
     - name: Run lint
+      working-directory: BattleShipUIGame
       run: npm run lint
 
     - name: Run tests
+      working-directory: BattleShipUIGame
       run: npm test
 
     - name: Build application
+      working-directory: BattleShipUIGame
       run: npm run build
